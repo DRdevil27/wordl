@@ -2,7 +2,6 @@
 # Wordl is a word guessing game where you have to guess a word by guessing letters in it.
 # The game is played in the terminal.
 # The word is randomly generated from an API.
-
 import requests
 
 MAX_POINTS = 10
@@ -11,15 +10,17 @@ incorect_guesses = 0
 redacted_word = []
 letters = []
 amount_of_guesses = 0
+max_word_length = 10
+min_word_length = 5
 
 # check if word length is between is valid. 
 # should be between 5 and 10 or 0/none for random length
 def check_word_lenght(word_length):
     if word_length == 0 or word_length == None:
         return
-    if word_length > 10 or word_length < 5:
+    if word_length > max_word_length or word_length < min_word_length:
         print('your number was ' + str(word_length))
-        word_length = input('Please enter a number between 5 and 10')
+        word_length = input(f'please give a number between {min_word_length} and {max_word_length} ')
         quit_game(word_length)
         word_length = int(word_length)
         check_word_lenght(word_length)
@@ -75,7 +76,7 @@ def quit_game(input):
         exit()
 
 # calculate the score
-def calculate_score( amount_of_guesses, corect_guesses, incorect_guesses):
+def calculate_score(amount_of_guesses, corect_guesses, incorect_guesses):
     if incorect_guesses == 0:
         score = MAX_POINTS /1
     else :
@@ -116,7 +117,7 @@ def welcome_text():
 def start_playing(corect_guesses, incorect_guesses):
     amount_of_guesses = 0
     welcome_text()
-    word_length = input('How long do you want your word?(between 5 and 10) ')
+    word_length = input(f'How long do you want your word?(between {min_word_length} and {max_word_length}) ')
     quit_game(word_length)
     word_length = int(word_length)
     check_word_lenght(word_length)
