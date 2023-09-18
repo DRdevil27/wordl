@@ -38,7 +38,6 @@ def api_call(word_length):
         return None
     response = response.text[1:-1]
     response = response.lower()
-    print(response)
     return response
 
 # split the word into letters and replace them with underscores
