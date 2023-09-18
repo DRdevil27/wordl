@@ -85,7 +85,7 @@ def calculate_score( amount_of_guesses, corect_guesses, incorect_guesses):
     return score
 
 # ask the user for a letter and check if it is in the word
-def ask_letter_loop(letters, amount_of_guesses, corect_guesses, incorect_guesses):
+def ask_letter(letters, amount_of_guesses, corect_guesses, incorect_guesses):
     while True:
         guess = input('letter: ')
         amount_of_guesses+=1
@@ -123,6 +123,6 @@ def start_playing(corect_guesses, incorect_guesses):
     word = api_call(word_length)
     letters = split_word(word)
     print_plaing_field()
-    ask_letter_loop(letters, amount_of_guesses, corect_guesses, incorect_guesses)
+    ask_letter(letters, amount_of_guesses, corect_guesses, incorect_guesses)
 
 start_playing(corect_guesses, incorect_guesses)
